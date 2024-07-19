@@ -9,7 +9,7 @@ function SignUpPage() {
         <SignUpForm/>
         <div className="text-center w-full max-w-sm h-14 text-gray border border-border mt-5 rounded flex justify-center items-center">
           Есть аккаунт?{" "}
-          <Link href="/signin" className="text-blue ml-4">
+          <Link href="/sign-in" className="text-blue ml-4">
             Войти
           </Link>
         </div>

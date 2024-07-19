@@ -1,6 +1,6 @@
 import { PostCard, SideBar } from "@/widgets";
 
-export default function Home() {
+function Home() {
   return (
     <div className="max-w-[1080px] w-full mx-auto">
       <div className="flex w-full justify-between">
@@ -15,3 +15,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

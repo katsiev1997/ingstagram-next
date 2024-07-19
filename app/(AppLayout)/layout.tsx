@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Instagram | Home",
 };
 
-export default function AppLayout({
+function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -17,3 +17,5 @@ export default function AppLayout({
     </main>
   );
 }
+
+export default AppLayout;
