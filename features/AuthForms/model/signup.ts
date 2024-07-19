@@ -1,37 +1,61 @@
 import { axiosInstance } from "@/shared/api";
 import axios from "axios";
 
+interface UserData {
+  id: number;
+  email: string;
+  username: string;
+  fullname: string;
+  profileImageUrl: string;
+}
+
 interface ReturnData {
   token: string;
-  user: {
-    email: string;
-    username: string;
-    fullName: string;
-  }
+  userData: UserData;
 }
+
 
 export const fetchSignUp = async (
   email: string,
   username: string,
-  fullName: string,
+  fullname: string,
   password: string
-):Promise<ReturnData> => {
+): Promise<ReturnData> => {
   try {
-    const res = await axiosInstance.post("/auth/local/register", {
+    // Отправляем POST-запрос на сервер для регистрации
+    const response = await axiosInstance.post("/auth/register", {
       username,
       email,
       password,
-      fullName,
+      fullname,
     });
-    return res.data.user;
-  } catch (err) {
-    if (axios.isAxiosError(err)) {
-      // Обработка ошибки axios
-      console.error("An error occurred:", err.response);
+    // Достаем токен и данные пользователя из ответа
+    const { token, userData } = response.data;
+
+    // Сохраняем токен в localStorage
+    localStorage.setItem("token", token);
+
+    // Возвращаем данные
+    return {
+      token,
+      userData,
+    };
+  } catch (error) {
+    // Обработка ошибок
+    if (axios.isAxiosError(error)) {
+      // Если это ошибка axios
+      console.error(
+        "An error occurred during sign-in:",
+        error.response?.data || error.message
+      );
+      throw new Error(
+        error.response?.data.message || "An error occurred during sign-in"
+      );
     } else {
-      // Обработка других ошибок
-      console.error("An unexpected error occurred:", err);
+      // Если это другая ошибка
+      console.error("An unexpected error occurred:", error);
+      throw new Error("An unexpected error occurred during sign-in");
     }
-    throw err;
   }
 };
+

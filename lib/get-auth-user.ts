@@ -7,7 +7,7 @@ interface ReturnData {
     id: number;
     email: string;
     username: string;
-    fullName: string;
+    fullname: string;
     profileImageUrl: string;
   };
 }

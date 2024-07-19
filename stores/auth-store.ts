@@ -7,7 +7,7 @@ export type AuthState = {
     profileImageUrl: string;
     username: string;
     email: string;
-    fullName: string;
+    fullname: string;
   } | null;
 };
 
@@ -19,7 +19,7 @@ export type AuthActions = {
       profileImageUrl: string;
       email: string;
       username: string;
-      fullName: string;
+      fullname: string;
     }
   ) => void;
   logout: () => void;

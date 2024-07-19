@@ -10,10 +10,10 @@ import { useRouter } from "next/navigation";
 type Props = {};
 
 export const SignInForm = ({}: Props) => {
+  const auth = useAuthStore((state) => state.auth);
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const auth = useAuthStore((state) => state.auth);
-  const route = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ export const SignInForm = ({}: Props) => {
 
     auth(token, userData);
     localStorage.setItem("token", token);
-    route.push("/");
+    router.push("/")
   };
   const inputClassName =
     "pl-4 w-full h-10 border border-border rounded outline-none focus:border-blue ";
