@@ -15,7 +15,7 @@ interface ReturnData {
 export const getAuthUser = async (): Promise<ReturnData> => {
   try {
     const res = await axiosInstance.get("/auth/refresh_token");
-    localStorage.setItem("token", res.data.token);
+    // localStorage.setItem("token", res.data.token);
     return { token: res.data.token, userData: res.data.userData };
   } catch (err) {
     if (axios.isAxiosError(err)) {
