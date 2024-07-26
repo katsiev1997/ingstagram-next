@@ -1,4 +1,4 @@
-import { PostCard, SideBar } from "@/widgets";
+import { PostCard, SideBar } from "@/components/widgets";
 
 function Home() {
   return (

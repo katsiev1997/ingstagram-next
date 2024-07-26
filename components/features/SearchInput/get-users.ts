@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/shared/api";
+import { axiosInstance } from "@/components/shared/api";
 
 export type User = {
   id: number;

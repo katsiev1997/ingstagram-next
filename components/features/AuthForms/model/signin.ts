@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/shared/api";
+import { axiosInstance } from "@/components/shared/api";
 import axios from "axios";
 
 interface UserData {

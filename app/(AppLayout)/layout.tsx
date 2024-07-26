@@ -1,4 +1,4 @@
-import { Header } from "@/widgets";
+import { Header } from "@/components/widgets";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

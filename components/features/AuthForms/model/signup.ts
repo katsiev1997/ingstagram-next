@@ -1,4 +1,4 @@
-import { axiosInstance } from "@/shared/api";
+import { axiosInstance } from "@/components/shared/api";
 import axios from "axios";
 
 interface UserData {
@@ -13,7 +13,6 @@ interface ReturnData {
   token: string;
   userData: UserData;
 }
-
 
 export const fetchSignUp = async (
   email: string,
@@ -58,4 +57,3 @@ export const fetchSignUp = async (
     }
   }
 };
-

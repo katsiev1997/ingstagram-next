@@ -1,8 +1,7 @@
-import { UserData } from '@/shared/components/user-data';
-import React from 'react'
+import { UserData } from "@/components/shared/components/user-data";
+import React from "react";
 
 function UserPage() {
-
   const images = [
     "/image1.png",
     "/image2.png",
@@ -52,4 +51,4 @@ function UserPage() {
   );
 }
 
-export default UserPage
+export default UserPage;

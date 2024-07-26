@@ -1,4 +1,4 @@
-import { ProfileData } from "@/shared/components";
+import { ProfileData } from "@/components/shared/components";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

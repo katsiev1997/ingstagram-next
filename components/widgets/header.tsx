@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchInput } from "@/features";
+import { SearchInput } from "@/components/features";
 import { getAuthUser } from "@/lib/get-auth-user";
 import { useAuthStore } from "@/stores";
 import Image from "next/image";

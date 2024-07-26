@@ -1,6 +1,6 @@
 "use client";
 
-import { UserCard } from "@/shared/components";
+import { UserCard } from "@/components/shared/components";
 import { useAuthStore } from "@/stores";
 import Image from "next/image";
 import React from "react";

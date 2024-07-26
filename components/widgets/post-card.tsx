@@ -1,4 +1,4 @@
-import { AddComment } from "@/features";
+import { AddComment } from "@/components/features";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

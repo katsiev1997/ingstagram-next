@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
-import { useUserSearch } from "@/shared/hooks/use-user-search";
+import { useUserSearch } from "@/components/shared/hooks/use-user-search";
 
 export const SearchInput = () => {
   const {

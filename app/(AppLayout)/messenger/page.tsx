@@ -1,4 +1,4 @@
-import { DialogCard } from "@/shared/components/dialog-card";
+import { DialogCard } from "@/components/shared/components/dialog-card";
 import React from "react";
 
 function MessengerPage() {

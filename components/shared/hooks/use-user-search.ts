@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUsers, User } from "@/features/SearchInput/get-users";
+import { getUsers, User } from "@/components/features/SearchInput/get-users";
 
 export const useUserSearch = () => {
   const [username, setUsername] = useState("");
