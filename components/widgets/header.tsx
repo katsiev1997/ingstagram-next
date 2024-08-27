@@ -11,41 +11,7 @@ import React, { useEffect, useCallback } from "react";
 type Props = {};
 
 export const Header = (props: Props) => {
-  const { auth } = useAuthStore();
-  const router = useRouter();
 
-  const getUserData = useCallback(async () => {
-    try {
-      const res = await getAuthUser();
-      if (!res.userData) {
-        router.push("/sign-in");
-        return null;
-      }
-      return res;
-    } catch (error) {
-      console.error("Failed to get user data:", error);
-      router.push("/sign-in");
-      return null;
-    }
-  }, [router]);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const accessToken = localStorage.getItem("token");
-      if (!accessToken) {
-        router.push("/sign-in");
-        return;
-      }
-
-      const userData = await getUserData();
-      if (userData) {
-        const { token, userData: user } = userData;
-        auth(token, user);
-      }
-    };
-
-    checkAuth();
-  }, [getUserData, auth, router]);
   return (
     <header className="w-full border-b border-border h-14 flex justify-center">
       <div className="max-w-[1080px] w-full h-full flex items-center gap-3 justify-between px-3">

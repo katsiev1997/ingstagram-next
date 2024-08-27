@@ -40,16 +40,16 @@ export const SearchInput = () => {
         alt="search"
       />
       {isFocused && username && users.length > 0 && (
-        <div className="absolute top-10 z-10 bg-[#fff] w-96 rounded-lg shadow-md shadow-blue ">
+        <div className="absolute top-10 z-10 border border-slate-300 bg-[#fff] w-96 rounded-lg drop-shadow-md">
           {users.map((user, i) => (
             <div
               key={user.id}
               onMouseDown={() => handleUserSelect(user.username, router.push)}
               className={divClass(users.length, i)}
             >
-              {user.profileImageUrl && (
+              {user.avatarUrl && (
                 <img
-                  src={user.profileImageUrl}
+                  src={user.avatarUrl}
                   alt="avatar"
                   width={40}
                   height={40}

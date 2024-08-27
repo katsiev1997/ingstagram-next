@@ -1,21 +1,26 @@
 "use client";
 
 import { UserCard } from "@/components/shared/components";
-import { useAuthStore } from "@/stores";
 import Image from "next/image";
 import React from "react";
 
-type Props = {};
+type Props = {
+  user: {
+    username: string;
+    email: string;
+    fullName?: string;
+    
+  }
+};
 
-export const SideBar = (props: Props) => {
-  const userData = useAuthStore((state) => state.userData);
+export const SideBar = ({ user }: Props) => {
   return (
     <aside className="w-full">
       <div className="flex justify-between items-center my-8">
         <Image src="/profile_avatar.png" alt="avatar" width={56} height={56} />
         <div className="flex flex-col ">
-          <span className="font-semibold">{userData?.username}</span>
-          <span className="text-gray">{userData?.fullname}</span>
+          <span className="font-semibold">{user?.username}</span>
+          <span className="text-gray">{user?.fullName}</span>
         </div>
         <button className="text-blue font-semibold">Switch</button>
       </div>

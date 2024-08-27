@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { fetchSignIn } from "../model/signin";
 import { useAuthStore } from "@/stores";
 import { useRouter } from "next/navigation";
+import { signIn } from "@/actions/sign-in";
 
 type Props = {};
 
@@ -22,19 +23,19 @@ export const SignInForm = ({}: Props) => {
       return;
     }
 
-    const userPromise = fetchSignIn(email, password);
+    const userPromise = signIn(email, password);
 
-    await toast.promise(userPromise, {
+  await toast.promise(userPromise, {
       loading: "Авторизация...",
       success: "Вы успешно авторизовались",
       error: "Ошибка при авторизации",
     });
 
-    const { token, userData } = await userPromise;
-
-    auth(token, userData);
-    localStorage.setItem("token", token);
-    router.push("/")
+    const user = await userPromise;
+    if (user) {
+      router.push("/");
+    }
+    
   };
   const inputClassName =
     "pl-4 w-full h-10 border border-border rounded outline-none focus:border-blue ";

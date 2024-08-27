@@ -3,19 +3,16 @@
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { fetchSignUp } from "../model/signup";
-import { useAuthStore } from "@/stores";
 import { useRouter } from "next/navigation";
+import { signUp } from "@/actions/sign-up";
 
 type Props = {};
 
 export const SignUpForm = ({}: Props) => {
-  const auth = useAuthStore((state) => state.auth);
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,7 +26,7 @@ export const SignUpForm = ({}: Props) => {
       return;
     }
 
-    const userPromise = fetchSignUp(email, username, fullname, password);
+    const userPromise = signUp(email, username, password);
 
     await toast.promise(userPromise, {
       loading: "Регистрация...",
@@ -37,11 +34,11 @@ export const SignUpForm = ({}: Props) => {
       error: "Ошибка при регистрации",
     });
 
-    const { token, userData } = await userPromise;
-
-    auth(token, userData);
-    localStorage.setItem("token", token);
-    router.push("/");
+    const user = await userPromise;
+    console.log(user)
+    if (user) {
+      router.push("/");
+    }
   };
 
   const inputClassName =
@@ -64,14 +61,6 @@ export const SignUpForm = ({}: Props) => {
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
         placeholder="Адрес электронной почты"
-      />
-      <input
-        value={fullname}
-        onChange={(e) => setFullname(e.currentTarget.value)}
-        className={inputClassName}
-        type="text"
-        autoComplete="current-password"
-        placeholder="Имя и фамилия"
       />
       <input
         value={username}
